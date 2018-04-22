@@ -10,6 +10,22 @@
   </head>
 
   <body>
+    <div class="header-container">
+      <header>
+        <h1 class="title-border"><%= link_to "Blocipedia", root_path, class: 'title'  %></h1>
+
+        <ul class="account-information">
+          <% if user_signed_in? %>
+            <li><%= current_user.username %></li>
+            <li class="second-button"><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
+          <% else %>
+            <li><%= link_to "Sign In", new_user_session_path, class: 'nav-link' %></li>
+            <li class="second-button"><%= link_to "Sign Up", new_user_registration_path, class: 'nav-link' %></li>
+          <% end %>
+        </ul>
+      </header>
+    </div>
+
     <%= yield %>
   </body>
 </html>
