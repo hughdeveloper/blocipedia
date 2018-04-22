@@ -1,9 +1,3 @@
-FactoryBot.define do
-
-  factory :user do
-    username "Bloc"
-    email "bloc@blocipedia.com"
-    password "password"
-    password_confirmation 'password'
-  end
+RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
 end
