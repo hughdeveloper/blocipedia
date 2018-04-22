@@ -11,7 +11,12 @@ RSpec.describe User, type: :model do
   end
 
   it "has a unique email" do
-    user2 = build(:user)
+    user2 = build(:user, username: "Bloc2")
+    expect(user2).to_not be_valid
+  end
+
+  it "has a unique username" do
+    user2 = build(:user, email: "bloc2@blocipedia.com")
     expect(user2).to_not be_valid
   end
 
@@ -22,6 +27,11 @@ RSpec.describe User, type: :model do
 
   it "is not valid without an email" do
     user2 = build(:user, email: nil)
+    expect(user2).to_not be_valid
+  end
+
+  it "is not valid without an username" do
+    user2 = build(:user, username: nil)
     expect(user2).to_not be_valid
   end
 
