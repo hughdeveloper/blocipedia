@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :wiki do
+    title { Faker::String.random(3..12) }
+    body { Faker::String.random(100..500) }
+    private false
+    user nil
+  end
 
   factory :user do
     username "bloc"
