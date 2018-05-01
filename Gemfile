@@ -46,6 +46,7 @@ end
 group :test do
   gem 'shoulda-matchers', '~> 3.1.2', require: false
   gem 'faker', '~> 1.8', '>= 1.8.7'
+  gem 'database_cleaner', '~> 1.7'
 end
 
 group :development do
