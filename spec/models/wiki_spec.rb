@@ -6,6 +6,9 @@ RSpec.describe Wiki, type: :model do
     @user1 = create(:user)
   end
 
+
+
+
   let(:wiki) { Wiki.create!(title: "New Post Title", body: "New Wiki Body", private: false, user: @user1) }
 
 

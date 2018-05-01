@@ -1,0 +1,13 @@
+<h1>Creat New Wiki</h1>
+<%= form_for @wiki do |f| %>
+   <%= f.label :title %>
+   <%= f.text_field :title %>
+
+   <%= f.label :body %>
+   <%= f.text_area :body %>
+
+   <%= f.label :private %>
+   <%= f.check_box :private, value = false%>
+
+   <%= f.submit "Save" %>
+ <% end %>
