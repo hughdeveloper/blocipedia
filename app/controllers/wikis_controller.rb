@@ -1,8 +1,18 @@
 class WikisController < ApplicationController
+
+  before_action :require_sign_in, except: :show
+
+
+
+
+
+
   def index
+    @wikis = Wiki.all
   end
 
   def show
+    @wiki = Wiki.find(params[:id])
   end
 
   def new
@@ -15,6 +25,8 @@ class WikisController < ApplicationController
     @wiki.body = params[:wiki][:body]
     @wiki.private = params[:wiki][:private]
     @wiki.user_id = params[:wiki][:user]
+
+    @wiki.user = current_user
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."
@@ -55,4 +67,15 @@ class WikisController < ApplicationController
       render :show
     end
   end
+
+
+
+  private
+
+   def require_sign_in
+     unless current_user
+       flash[:alert] = "You must be logged in to do that"
+       redirect_to new_session_path
+     end
+   end
 end

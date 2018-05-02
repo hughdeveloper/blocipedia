@@ -7,7 +7,7 @@
    <%= f.text_area :body %>
 
    <%= f.label :private %>
-   <%= f.check_box :private, value = false%>
+   <%= f.check_box(:private, {}, false) %>
 
    <%= f.submit "Save" %>
  <% end %>

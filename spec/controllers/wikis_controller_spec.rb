@@ -10,6 +10,15 @@ RSpec.describe WikisController, type: :controller do
 
   let(:my_wiki){@user1.wikis.create! title: RandomData.random_sentence, body: RandomData.random_paragraph, private: false}
 
+
+
+  context "signed-in user" do
+    before do
+      create_session(@user1)
+  end
+
+
+
   describe "GET #index" do
     it "returns http success" do
       get :index
@@ -116,5 +125,5 @@ end
         expect(response).to redirect_to wikis_path
       end
     end
-
+  end
 end
