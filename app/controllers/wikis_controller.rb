@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
 
-  before_action :require_sign_in, except: :show
+  before_action :authenticate_user!, except: :show
 
 
 
@@ -24,8 +24,6 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     @wiki.private = params[:wiki][:private]
-    @wiki.user_id = params[:wiki][:user]
-
     @wiki.user = current_user
 
     if @wiki.save

@@ -12,13 +12,6 @@ RSpec.describe WikisController, type: :controller do
 
 
 
-  context "signed-in user" do
-    before do
-      create_session(@user1)
-  end
-
-
-
   describe "GET #index" do
     it "returns http success" do
       get :index
@@ -126,4 +119,3 @@ end
       end
     end
   end
-end

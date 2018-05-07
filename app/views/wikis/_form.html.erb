@@ -1,0 +1,7 @@
+<%= form_for [wiki] do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: "Enter post title" %>
+    <%= f.label :body %>
+    <%= f.text_area :body, placeholder: "Enter post body" %>
+    <%= f.submit "Save"%>
+<% end %>
