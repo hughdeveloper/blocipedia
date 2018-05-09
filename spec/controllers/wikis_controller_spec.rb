@@ -6,9 +6,11 @@ RSpec.describe WikisController, type: :controller do
 
   before(:all) do
     @user1 = create(:user)
+    sign_in @user1
   end
 
   let(:my_wiki){@user1.wikis.create! title: RandomData.random_sentence, body: RandomData.random_paragraph, private: false}
+
 
 
 

@@ -11,6 +11,7 @@ admin = User.create!(
   username:     'Admin',
   email:    'admin@example.com',
   password: 'helloworld',
+  role: 2,
   confirmed_at: '2018-01-01',
   confirmation_sent_at: '2018-01-01'
 )
@@ -21,6 +22,7 @@ admin = User.create!(
      username: RandomData.random_name,
      email: RandomData.random_email,
      password: RandomData.random_sentence,
+     role: 0,
      confirmed_at: '2018-01-01',
      confirmation_sent_at: '2018-01-01'
    )

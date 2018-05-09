@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
 
-  before_action :authenticate_user!, except: :show
+  before_action :authenticate_user!, except: [:show, :index]
 
   def index
     @wikis = Wiki.all
@@ -15,11 +15,10 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = Wiki.new
-    @wiki.title = params[:wiki][:title]
-    @wiki.body = params[:wiki][:body]
-    @wiki.private = params[:wiki][:private]
+
+    @wiki = Wiki.new(params.require(:wiki).permit(:title, :body, :private))
     @wiki.user = current_user
+    #@wiki = Wiki.new(params[:wiki])
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."
@@ -36,9 +35,11 @@ class WikisController < ApplicationController
   end
 
   def update
-    @wiki = Wiki.find(params[:id])
-    @wiki.title = params[:wiki][:title]
-    @wiki.body = params[:wiki][:body]
+      @wiki = Wiki.find(params[:id])
+      @wiki.update!(wiki_params)
+    #@wiki = Wiki.find(params[:id])
+    #@wiki.title = params[:wiki][:title]
+    #@wiki.body = params[:wiki][:body]
 
     if @wiki.save
       flash[:notice] = "Wiki was updated."
@@ -64,11 +65,7 @@ class WikisController < ApplicationController
 
 
   private
-
-   def require_sign_in
-     unless current_user
-       flash[:alert] = "You must be logged in to do that"
-       redirect_to new_session_path
-     end
+   def wiki_params
+     params.require(:wiki).permit(:title, :body, :private)
    end
 end
