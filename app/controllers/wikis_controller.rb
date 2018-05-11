@@ -16,7 +16,7 @@ class WikisController < ApplicationController
 
   def create
 
-    @wiki = Wiki.new(params.require(:wiki).permit(:title, :body, :private))
+    @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
     #@wiki = Wiki.new(params[:wiki])
 
