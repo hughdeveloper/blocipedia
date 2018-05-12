@@ -5,6 +5,11 @@
     <p><%= @wiki.body %></p>
   </div>
   <div>
-    <%= link_to "Edit", edit_wiki_path(@wiki)%>
+    <% if policy(@wiki).update? %>
+      <%= link_to "Edit", edit_wiki_path(@wiki)%>
+    <% end %>
+    <% if policy(@wiki).destroy? %>
+      <%= link_to 'Delete', @wiki, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
   </div>
 </div>

@@ -16,6 +16,23 @@ admin = User.create!(
   confirmation_sent_at: '2018-01-01'
 )
 
+free = User.create!(
+  username:     'free',
+  email:    'free@example.com',
+  password: 'helloworld',
+  role: 0,
+  confirmed_at: '2018-01-01',
+  confirmation_sent_at: '2018-01-01'
+)
+
+premium = User.create!(
+  username:     'premium',
+  email:    'premium@example.com',
+  password: 'helloworld',
+  role: 1,
+  confirmed_at: '2018-01-01',
+  confirmation_sent_at: '2018-01-01'
+)
 
 10.times do
    User.create!(
