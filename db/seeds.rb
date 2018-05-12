@@ -20,7 +20,6 @@ free = User.create!(
   username:     'free',
   email:    'free@example.com',
   password: 'helloworld',
-  role: 0,
   confirmed_at: '2018-01-01',
   confirmation_sent_at: '2018-01-01'
 )
@@ -39,7 +38,6 @@ premium = User.create!(
      username: RandomData.random_name,
      email: RandomData.random_email,
      password: RandomData.random_sentence,
-     role: 0,
      confirmed_at: '2018-01-01',
      confirmation_sent_at: '2018-01-01'
    )
@@ -62,4 +60,5 @@ wikis = Wiki.all
 
 
 puts "Seed finished"
-puts "#{Wiki.count} wiki's created"
+puts "#{Wiki.count} wikis created"
+puts "#{User.count} users created"
