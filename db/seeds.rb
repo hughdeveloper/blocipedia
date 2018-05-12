@@ -17,7 +17,7 @@ admin = User.create!(
 )
 
 free = User.create!(
-  username:     'free',
+  username:     'Free',
   email:    'free@example.com',
   password: 'helloworld',
   confirmed_at: '2018-01-01',
@@ -25,7 +25,7 @@ free = User.create!(
 )
 
 premium = User.create!(
-  username:     'premium',
+  username:     'Premium',
   email:    'premium@example.com',
   password: 'helloworld',
   role: 1,
