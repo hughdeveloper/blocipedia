@@ -1,0 +1,6 @@
+<h1>Account Settings</h1>
+
+<h3>Account Type</h3>
+  <p><%= @user.role %></p>
+    <%= link_to "Upgrade Account", new_charge_path %>
+    <%= link_to "Downgrade Account", home_update_path%>

@@ -6,6 +6,7 @@ class ChargesController < ApplicationController
 
    #amount in cents
    @amount = 1500
+   @user = current_user
 
    customer = Stripe::Customer.create(
      email: current_user.email,
@@ -20,8 +21,10 @@ class ChargesController < ApplicationController
      currency: 'usd'
    )
 
+   @user.update!(user_premium)
+
    flash[:notice] = "Thanks for your purchase, #{current_user.email}!"
-   redirect_to user_path(current_user) # or wherever
+   redirect_to home_show_path(current_user) # or wherever
 
    # Stripe will send back CardErrors, with friendly messages
    # when something goes wrong.
@@ -39,4 +42,10 @@ class ChargesController < ApplicationController
     }
   end
 
+  private
+
+  def user_premium
+    @user.role = 1
+    params.permit(:role)
+  end
 end
