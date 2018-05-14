@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'random_data'
+require 'faker'
 
 admin = User.create!(
   username:     'Admin',
@@ -35,9 +36,9 @@ premium = User.create!(
 
 10.times do
    User.create!(
-     username: RandomData.random_name,
-     email: RandomData.random_email,
-     password: RandomData.random_sentence,
+     username: Faker::Internet.user_name,
+     email: Faker::Internet.email,
+     password: Faker::Internet.password(10),
      confirmed_at: '2018-01-01',
      confirmation_sent_at: '2018-01-01'
    )
@@ -48,8 +49,8 @@ premium = User.create!(
 
 50.times do
   Wiki.create!(
-    title: RandomData.random_sentence,
-    body: RandomData.random_paragraph,
+    title: Faker::String.random(3..12),
+    body: Faker::String.random(100..500),
     private: false,
     user: users.sample
   )

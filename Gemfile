@@ -52,7 +52,7 @@ end
 
 group :test do
   gem 'shoulda-matchers', '~> 3.1.2', require: false
-  gem 'faker', '~> 1.8', '>= 1.8.7'
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
   gem 'database_cleaner', '~> 1.7'
 end
 
