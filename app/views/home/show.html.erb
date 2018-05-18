@@ -7,5 +7,5 @@
     <%= link_to "Upgrade Account", new_charge_path %>
   <% end %>
   <% if policy(@user).premium? %>
-    <%= link_to "Downgrade Account", downgrade_create_path%>
+    <%= link_to "Downgrade Account", downgrade_create_path, :data => {:confirm => 'Are you sure? All private wikis will be made public.'} %>
   <% end %>
