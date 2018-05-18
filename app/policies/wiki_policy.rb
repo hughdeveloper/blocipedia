@@ -14,7 +14,6 @@ class WikiPolicy < ApplicationPolicy
     user.admin? || record.user == user
   end
 
-
   class Scope < Scope
     def resolve
       if user.admin?

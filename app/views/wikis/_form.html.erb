@@ -3,5 +3,12 @@
     <%= f.text_field :title, placeholder: "Enter post title" %>
     <%= f.label :body %>
     <%= f.text_area :body, placeholder: "Enter post body" %>
+    <% if current_user.admin? || current_user.premium? %>
+    <div class="private-container">
+        <%= f.label :private, class: 'checkbox' do %>
+          <%= f.check_box :private %> Private wiki
+        <% end %>
+      </div>
+    <% end %>
     <%= f.submit "Save"%>
 <% end %>

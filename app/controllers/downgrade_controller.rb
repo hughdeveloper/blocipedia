@@ -2,8 +2,11 @@ class DowngradeController < ApplicationController
 
   def create
     @user = current_user
+    @wikis = policy_scope(Wiki)
 
-     current_user.free!
+    current_user.free!
+
+    @wikis.update_all(:private => false)
 
     if @user.save
       flash[:notice] = "Your account has been downgraded to a free account."

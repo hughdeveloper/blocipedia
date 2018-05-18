@@ -2,5 +2,10 @@
 
 <h3>Account Type</h3>
   <p><%= @user.role %></p>
+
+  <% if policy(@user).free? %>
     <%= link_to "Upgrade Account", new_charge_path %>
+  <% end %>
+  <% if policy(@user).premium? %>
     <%= link_to "Downgrade Account", downgrade_create_path%>
+  <% end %>

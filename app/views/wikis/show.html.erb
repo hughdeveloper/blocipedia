@@ -3,6 +3,7 @@
 <div>
   <div>
     <p><%= @wiki.body %></p>
+    <p>Private: <%= @wiki.private %></p>
   </div>
   <div>
     <% if policy(@wiki).update? %>

@@ -1,5 +1,16 @@
-<h1>All Wikis</h1>
- <% @wikis.each do |wiki| %>
-   <h3><%= link_to wiki.title, wiki_path(wiki.id) %></h3>
-   <p><%= wiki.user.username %></p>
- <% end %>
+<h1>Wikis</h1>
+
+<h2>My Private Wikis</h2>
+<% policy_scope(@wikis).each do |wiki| %>
+  <% if wiki.private == true %>
+    <p><%= link_to wiki.title, wiki_path(wiki.id) %></p>
+  <% end %>
+<% end %>
+
+<h2>All Wikis</h2>
+<% @wikis.each do |wiki| %>
+  <% if wiki.private == false %>
+    <h3><%= link_to wiki.title, wiki_path(wiki.id) %></h3>
+    <p><%= wiki.user.username %></p>
+  <% end %>
+<% end %>
