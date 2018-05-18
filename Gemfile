@@ -40,7 +40,9 @@ gem 'pundit', '~> 1.1'
 
 gem 'stripe'
 
- gem 'figaro', '1.0'
+gem 'figaro', '1.0'
+
+gem 'redcarpet', '~> 3.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

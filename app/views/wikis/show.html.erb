@@ -2,8 +2,8 @@
 <h4><%= @wiki.user.username%></h4>
 <div>
   <div>
-    <p><%= @wiki.body %></p>
     <p>Private: <%= @wiki.private %></p>
+    <p><%= markdown(@wiki.body) %></p>
   </div>
   <div>
     <% if policy(@wiki).update? %>
