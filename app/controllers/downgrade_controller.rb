@@ -1,14 +1,18 @@
 class DowngradeController < ApplicationController
 
   def create
-    @user = current_user
-    @wikis = policy_scope(Wiki)
+    #@user = current_user
+    #@wikis = policy_scope(Wiki)
 
-    current_user.free!
+    #current_user.free!
 
-    @wikis.update_all(:private => false)
+    #@wikis.update_all(:private => false)
 
-    if @user.save
+    # 1. Wiki.downgrade! wikis: @wikis, user: current_user
+
+
+
+    if current_user.downgrade!
       flash[:notice] = "Your account has been downgraded to a free account."
       redirect_to home_show_path
     else

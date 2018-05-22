@@ -16,10 +16,10 @@ class WikiPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.admin?
+      if user && user.admin?
         scope.all
       else
-        scope.where(user: user)
+        scope.where(private: false)
       end
     end
   end

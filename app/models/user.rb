@@ -13,6 +13,12 @@ class User < ApplicationRecord
 
   has_many :wikis
 
+  def downgrade!
+    self.free!
+    self.wikis.update_all private: false
+    true
+  end
+
   private
 
   def set_default_role

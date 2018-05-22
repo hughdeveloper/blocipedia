@@ -19,10 +19,11 @@ class WikisController < ApplicationController
   end
 
   def create
-
     @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
     #@wiki = Wiki.new(params[:wiki])
+
+
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."
