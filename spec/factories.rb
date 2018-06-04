@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :collaborator do
+    user nil
+    wiki nil
+  end
   factory :wiki do
     title { Faker::String.random(3..12) }
     body { Faker::String.random(100..500) }

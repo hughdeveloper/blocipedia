@@ -12,6 +12,8 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
 
   has_many :wikis
+  has_many :collaborators
+  has_many :shared_wikis, through: :collaborators, source: :wiki
 
   def downgrade!
     self.free!
