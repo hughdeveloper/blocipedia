@@ -7,11 +7,12 @@ class WikisController < ApplicationController
   end
 
   def index
-    @wikis = Wiki.all
+    @wikis = policy_scope(Wiki)
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+    @users = User.all
   end
 
   def new
@@ -22,8 +23,6 @@ class WikisController < ApplicationController
     @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
     #@wiki = Wiki.new(params[:wiki])
-
-
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."
@@ -37,6 +36,7 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @users = User.all
   end
 
   def update

@@ -1,3 +1,7 @@
 <h1>Edit Wiki</h1>
 
 <%= render partial: 'form', locals: {wiki: @wiki} %>
+
+<% if @wiki.private? || current_user.role != 0 || current_user.collaborator? %>
+    <%= render partial: 'collaborators/edit', locals: { wiki: @wiki, user: current_user } %>
+ <% end %>

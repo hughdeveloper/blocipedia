@@ -3,6 +3,13 @@
 <div>
   <div>
     <p>Private: <%= @wiki.private %></p>
+    <h3>Collaborators</h3>
+    <% @wiki.collaborators.each do |collaborator| %>
+      <span class="glyphicon glyphicon-user"></span>
+      <%= collaborator.user.username %>
+      &nbsp;
+    <% end %>
+
     <p><%= markdown(@wiki.body) %></p>
   </div>
   <div>
