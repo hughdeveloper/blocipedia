@@ -5,7 +5,7 @@
   <span class="glyphicon glyphicon-user"></span>
   <%= collaborator.user.username %>
   <% if @wiki.user == current_user || user.admin? %>
-    <%= link_to "Delete Collaborator", [collaborator], method: :delete, class: "glyphicon glyphicon-remove" %>
+    <%= link_to "Delete Collaborator", wiki_collaborators_path(:wiki_id => @wiki), method: :delete, data: { confirm: 'Are you sure?' } , class: "glyphicon glyphicon-remove" %>
   <% end %>
   &nbsp;
 <% end %>

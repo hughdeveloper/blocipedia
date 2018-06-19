@@ -2,6 +2,6 @@
 
 <%= render partial: 'form', locals: {wiki: @wiki} %>
 
-<% if @wiki.private? || current_user.role != 0 || current_user.collaborator? %>
+<% if @wiki.private? && current_user.role != 0 %>
     <%= render partial: 'collaborators/edit', locals: { wiki: @wiki, user: current_user } %>
  <% end %>
