@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :charges, only: [:new, :create]
   resources :wikis do
-    resources :collaborators
+    resources :collaborators, only [:create, :destroy]
     collection do
       get '/user_wikis', to: 'wikis#user_wikis', as: :user
     end
